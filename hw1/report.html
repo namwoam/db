@@ -7924,7 +7924,7 @@ There are 79 days in year 2012 that satisfy the condition.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Section-(c)">Section (c)<a class="anchor-link" href="#Section-(c)">¶</a></h3><p>To store a min-heap inside an array or list, for any element at index $i$, store the left child elememt at index $2i$ and the right child at index $2i+1$, in this way, we can preserve the edge relationship of the heap inside an array with index value. The values inside the array at section(a) are:
+<h3 id="Section-(c)">Section (c)<a class="anchor-link" href="#Section-(c)">¶</a></h3><p>To store a min-heap inside an array or list, for any element at index $i$, store the left child elememt at index $2i+1$ and the right child at index $2i+2$, then we can access the parent node at index $\frac{i-1}{2}$. In this way, we can preserve the edge relationship of the heap inside an array with index value. The values inside the array at section(a) are:
 $$
 \begin{bmatrix}
     1&amp;3&amp;4&amp;12&amp;5&amp;6&amp;9&amp;18&amp;27&amp;33&amp;15&amp;7&amp;20
