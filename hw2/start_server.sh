@@ -1,0 +1,1 @@
+postgres -D ./db_data
