@@ -2,6 +2,12 @@
     "sqltools.connections": [
         {
             "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "local_sqlite",
+            "database": "${workspaceFolder:db}/hw2/db.sqlite"
+        },
+        {
+            "previewLimit": 50,
             "server": "localhost",
             "port": 5432,
             "driver": "PostgreSQL",
@@ -9,12 +15,6 @@
             "username": "postgres",
             "connectionTimeout": 10,
             "database": "postgres"
-        },
-        {
-            "previewLimit": 50,
-            "driver": "SQLite",
-            "name": "local_sqlite",
-            "database": "${workspaceFolder:db}/hw2/db.sqlite"
         }
     ],
     "sqltools.useNodeRuntime": true
