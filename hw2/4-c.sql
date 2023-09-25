@@ -1,0 +1,61 @@
+DROP TABLE IF EXISTS MEMBER;
+CREATE TABLE MEMBER (
+    citizen_id VARCHAR(10) NOT NULL UNIQUE PRIMARY KEY,
+    full_name VARCHAR(20) NOT NULL UNIQUE,
+    birthday DATE NOT NULL,
+    phone_number VARCHAR(20) NOT NULL UNIQUE,
+    email VARCHAR(100)
+);
+DROP TABLE IF EXISTS TRAIN;
+CREATE TABLE TRAIN(
+    train_id BIGINT NOT NULL UNIQUE PRIMARY KEY,
+    start_service DATE NOT NULL
+);
+DROP TABLE IF EXISTS TRIP;
+CREATE TABLE TRIP(
+    trip_number BIGINT NOT NULL UNIQUE PRIMARY KEY,
+    trid BIGINT NOT NULL,
+    FOREIGN KEY (trid) REFERENCES TRAIN(train_id)
+);
+DROP TABLE IF EXISTS STATION;
+CREATE TABLE STATION(
+    station_id BIGINT NOT NULL UNIQUE PRIMARY KEY,
+    official_name VARCHAR(20) NOT NULL UNIQUE,
+    address VARCHAR(100) NOT NULL
+);
+DROP TABLE IF EXISTS PASS_BY;
+CREATE TABLE PASS_BY(
+    pb_id BIGINT NOT NULL UNIQUE PRIMARY KEY,
+    stid BIGINT NOT NULL,
+    trnum BIGINT NOT NULL,
+    arrival_time TIME NOT NULL,
+    departure_time TIME NOT NULL,
+    FOREIGN KEY (stid) REFERENCES STATION(station_id),
+    FOREIGN KEY (trnum) REFERENCES TRIP(trip_number),
+    CHECK(departure_time > arrival_time)
+);
+DROP TABLE IF EXISTS TICKET_TYPE;
+CREATE TABLE TICKET_TYPE (
+    ticket_type_id BIGINT NOT NULL UNIQUE PRIMARY KEY,
+    price INT NOT NULL,
+    car_level INT NOT NULL,
+    start_sid BIGINT NOT NULL,
+    end_sid BIGINT NOT NULL,
+    FOREIGN KEY (end_sid) REFERENCES STATION(station_id),
+    FOREIGN KEY (start_sid) REFERENCES STATION(station_id),
+    CHECK(start_sid != end_sid)
+);
+DROP TABLE IF EXISTS TICKET;
+CREATE TABLE TICKET (
+    ticket_id BIGINT NOT NULL UNIQUE PRIMARY KEY,
+    booking_time TIME NOT NULL,
+    payment_time TIME,
+    canceled BOOLEAN NOT NULL,
+    ttid BIGINT NOT NULL,
+    cid VARCHAR(10),
+    trnum BIGINT NOT NULL,
+    FOREIGN KEY (trnum) REFERENCES TRIP(trip_number),
+    FOREIGN KEY (ttid) REFERENCES TICKET_TYPE(ticket_type_id),
+    FOREIGN KEY (cid) REFERENCES MEMBER(citizen_id),
+    CHECK(payment_time >= booking_time)
+);
