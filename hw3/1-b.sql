@@ -1,0 +1,4 @@
+SELECT e.Fname, e.Lname
+FROM EMPLOYEE AS e
+    LEFT JOIN DEPENDENT AS d ON e.Ssn = d.Essn
+WHERE d.Essn IS NULL;

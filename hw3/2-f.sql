@@ -1,0 +1,5 @@
+SELECT S.Ssn,
+    COUNT(E.Super_ssn)
+FROM EMPLOYEE AS E
+    RIGHT JOIN EMPLOYEE AS S ON E.Super_ssn = S.Ssn
+GROUP BY S.Ssn
