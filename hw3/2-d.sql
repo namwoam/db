@@ -27,9 +27,8 @@ SELECT E.Ssn,
     D.Mgr_ssn,
     DC.flag as have_dependent
 FROM EMPLOYEE AS E
-    JOIN DEPARTMENT AS D
+    JOIN DEPARTMENT AS D ON D.Dnumber = E.Dno
     JOIN WORKS_ON AS WO ON WO.Essn = E.Ssn
     JOIN cnt_rnk AS CR ON WO.Pno == CR.Pnumber
     AND CR.rnk = 2
     JOIN dependent_check AS DC ON DC.Ssn == E.Ssn
-WHERE D.Dnumber = E.Dno
