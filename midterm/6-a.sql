@@ -1,0 +1,6 @@
+SELECT B.Title
+FROM BOOK AS B
+    JOIN BOOK_LOANS AS BL ON B.Book_id = BL.Book_id
+    AND BL.Branch_id = 12345
+GROUP BY B.Book_id
+ORDER BY COUNT(*)
