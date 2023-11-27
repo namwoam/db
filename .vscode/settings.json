@@ -15,6 +15,12 @@
             "driver": "SQLite",
             "name": "local_sqlite",
             "database": "${workspaceFolder:db}/hw2/db.sqlite"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "ftp_testing",
+            "database": "${workspaceFolder:db}/ftp/analysis/db.sqlite"
         }
     ],
     "sqltools.useNodeRuntime": true

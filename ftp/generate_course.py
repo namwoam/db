@@ -54,7 +54,7 @@ instructors.to_csv("INSTRUCTOR.csv")
 
 courses = pd.DataFrame(
     {"course_ID": raw_courses["course_ID"], "course_name": raw_courses["course_name"], "semester": raw_courses["semester"], "department_ID": raw_courses["department"]})
-
+courses = courses.drop_duplicates(subset="course_ID", keep='first')
 courses.to_csv("COURSE.csv")
 
 offer = pd.DataFrame({"course_ID": raw_courses["course_ID"], "instructor_ID": pd.Categorical(
